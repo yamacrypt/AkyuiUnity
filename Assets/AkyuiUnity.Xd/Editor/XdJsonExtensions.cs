@@ -118,5 +118,21 @@ namespace AkyuiUnity.Xd
             color.a *= xdArtboardChildJson.Style?.Opacity ?? 1f;
             return color;
         }
+
+        public static Color ToUnityColor(this XdGradientStopJson xdGradientStopJson)
+        {
+            var color = new Color32 { r = 255, g = 255, b = 255, a = 255 };
+            if (xdGradientStopJson == null) return color;
+
+            var xdColorJson = xdGradientStopJson.Color;
+            if (xdColorJson?.Value == null) return color;
+
+            color.r = (byte) xdColorJson.Value.R;
+            color.g = (byte) xdColorJson.Value.G;
+            color.b = (byte) xdColorJson.Value.B;
+            color.a = xdColorJson.Alpha == null ? (byte) 255 : (byte) (255 * xdColorJson.Alpha);
+
+            return color;
+        }
     }
 }
