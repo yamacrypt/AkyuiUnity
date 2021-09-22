@@ -535,10 +535,10 @@ namespace XdParser
         private class LinearGradientDefElement : IDefElement
         {
             public const string Name = "linearGradient";
-           public ElementParameter Parameter { get; set; } = new ElementParameter();
+            public ElementParameter Parameter { get; set; } = new ElementParameter();
            
             public IElement[] Children { get; set; }
-             public string ToSvg()
+            public string ToSvg()
             {
                 var children = string.Join("", Children.Select(x => x.ToSvg()));
                 return $@"<{Name} {Parameter.GetString()} >{children}</{Name}>";
@@ -593,7 +593,6 @@ namespace XdParser
             public ElementParameter Parameter { get; set; } = new ElementParameter();
             public string ToSvg()
             {
-
                 return $@"<{Name} {Parameter.GetString()} />";
             }
         }
